@@ -41,5 +41,17 @@ module.exports = {
 
         return response.json(dev);
 
+    },
+
+
+    async destroy(request, response){
+        try{
+            await Dev.findByIdAndDelete(request.params._id)
+
+            return response.json();
+        }catch(err){
+            return response.status(400).send({ error: 'Erro delete'})
+        }
+        
     }
 }
